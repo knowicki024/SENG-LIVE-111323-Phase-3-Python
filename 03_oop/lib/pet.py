@@ -45,10 +45,9 @@ class Pet: # UpperCamelCase # PascalCase
 
     pass
 
-milo = Pet("Milo", 5, "Great Pyrenees", "calm")
-clementine = Pet("Clementine", 12, "corgi mix", "sassy")
+# milo = Pet("Milo", 5, "Great Pyrenees", "calm")
+# clementine = Pet("Clementine", 12, "corgi mix", "sassy")
 
-ipdb.set_trace() # breakpoint
 
 # clementine = Pet() # instantiate a new instance 
 # ipdb> clementine # call the instance
@@ -93,3 +92,36 @@ ipdb.set_trace() # breakpoint
 # rose.age = 12
 # rose.age -> 12
 
+# Object Properties
+# Object Properties (Instance properties) 
+     # => Attributes that are controlled by methods
+class Owner:
+    # 1. Create an Owner class w age, then with two instance methods:
+    def __init__(self, age): # provide parameter
+        self.age = age
+        #2. get_name => Retrieve Owner's name
+
+    def get_name(self):
+        print(" retrieving owner's name")
+        return self._name # using '_' bc it's not attribute it's property 
+    
+        #3. set_name => Set Owner's name
+    def set_name(self, name):
+        print("setting up the owner's name" )
+            #3-1. Ensure that Owner's name is a string
+        if( isinstance(name, str)):  # true or false 
+            self._name = name
+
+            #3-2. If not, issue warning of "Name must be a string"
+        else:
+            print(" name must be a string ")
+    #4. Use property() to compile get_name / set_name and invoke them
+    name = property(get_name, set_name)
+    #Whenever we access an Owner instance's name
+
+
+katie = Owner(18)
+katie.set_name("KATIE")
+print(katie.get_name())
+
+ipdb.set_trace() # breakpoint
